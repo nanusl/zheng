@@ -9,8 +9,7 @@
 
     <dubbo:application name="zheng-cms-admin"/>
 
-    <dubbo:registry address="zookeeper://127.0.0.1:2181" default="false"/>
-    <dubbo:registry id="upmsRegistry" address="zookeeper://127.0.0.1:2181"/>
+    <dubbo:registry file="./zheng-cms-admin-dubbo.cache" address="zookeeper://127.0.0.1:2181"/>
 
     <!-- 订阅服务 -->
     <dubbo:consumer check="false"/>
@@ -31,7 +30,9 @@
     <dubbo:reference id="cmsPageService" interface="com.zheng.cms.rpc.api.CmsPageService" mock="true"/>
     <!-- 设置 -->
     <dubbo:reference id="cmsSettingService" interface="com.zheng.cms.rpc.api.CmsSettingService" mock="true"/>
+    <!-- 系统 -->
+    <dubbo:reference id="cmsSystemService" interface="com.zheng.cms.rpc.api.CmsSystemService" mock="true"/>
 
     <!-- 接口服务 -->
-    <dubbo:reference id="upmsApiService" interface="com.zheng.upms.rpc.api.UpmsApiService" mock="true" registry="upmsRegistry"/>
+    <dubbo:reference id="upmsApiService" interface="com.zheng.upms.rpc.api.UpmsApiService" mock="true"/>
 </beans>
